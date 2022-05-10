@@ -21,7 +21,7 @@ if [ "${RCLONE_AUTO_MODE}" = "move" ]; then
             echo "[ERROR] Failed to send job to rclone: $1"
         fi
     else
-        rclone rc --user "${GLOBAL_USER}" --pass "${GLOBAL_PASSWORD}" --rc-addr=localhost:61802 sync/move srcFs="$1" dstFs="${REMOTE_PATH}" _async=true
+        rclone rc --user "${GLOBAL_USER}" --pass "${GLOBAL_PASSWORD}" --rc-addr=localhost:61802 sync/move srcFs="$1" dstFs="${REMOTE_PATH}"/"$2" _async=true
         EXIT_CODE=$?
         if [ ${EXIT_CODE} -eq 0 ]; then
             echo "[INFO] Successfully send job to rclone: $1 -> ${REMOTE_PATH}"
@@ -39,7 +39,7 @@ elif [ "${RCLONE_AUTO_MODE}" = "copy" ]; then
             echo "[ERROR] Failed to send job to rclone: $1"
         fi
     else
-        rclone rc --user "${GLOBAL_USER}" --pass "${GLOBAL_PASSWORD}" --rc-addr=localhost:61802 sync/copy srcFs="$1" dstFs="${REMOTE_PATH}" _async=true
+        rclone rc --user "${GLOBAL_USER}" --pass "${GLOBAL_PASSWORD}" --rc-addr=localhost:61802 sync/copy srcFs="$1" dstFs="${REMOTE_PATH}"/"$2" _async=true
         EXIT_CODE=$?
         if [ ${EXIT_CODE} -eq 0 ]; then
             echo "[INFO] Successfully send job to rclone: $1 -> ${REMOTE_PATH}"
