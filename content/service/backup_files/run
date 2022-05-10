@@ -1,0 +1,17 @@
+#!/bin/sh
+
+sleep 600
+
+DRIVE_NAME_AUTO="$(sed -n '1p' /mnt/data/config/rclone.conf | sed "s/\[//g" | sed "s/\]//g")"
+if [ "${RCLONE_DRIVE_NAME}" = "auto" ]; then
+    DRIVENAME=${DRIVE_NAME_AUTO}
+else
+    DRIVENAME=${RCLONE_DRIVE_NAME}
+fi
+
+if [ "${HEROKU_KEEP_AWAKE}" = "true" ]; then
+    curl https://${HEROKU_APP_NAME}.herokuapp.com/${RANDOM}
+fi
+
+rclone copy --config /mnt/data/config/rclone.conf /mnt/data/config/qBittorrent/config "${DRIVENAME}":/"${HEROKU_APP_NAME}"/qbit 
+rclone copy --config /mnt/data/config/rclone.conf /mnt/data/config/filebrowser.db "${DRIVENAME}":/"${HEROKU_APP_NAME}"

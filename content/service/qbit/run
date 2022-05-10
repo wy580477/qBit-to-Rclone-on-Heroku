@@ -1,0 +1,28 @@
+#!/bin/sh
+
+mkdir -p /mnt/data/config/qBittorrent/config 2>/dev/null
+
+DRIVE_NAME_AUTO="$(sed -n '1p' /mnt/data/config/rclone.conf | sed "s/\[//g" | sed "s/\]//g")"
+if [ "${RCLONE_DRIVE_NAME}" = "auto" ]; then
+    DRIVENAME=${DRIVE_NAME_AUTO}
+else
+    DRIVENAME=${RCLONE_DRIVE_NAME}
+fi
+
+rclone copy --config /mnt/data/config/rclone.conf "${DRIVENAME}":/"${HEROKU_APP_NAME}"/qbit /mnt/data/config/qBittorrent/config
+
+if [ ! -f "/mnt/data/config/qBittorrent/config/qBittorrent.conf" ]; then
+    cp /workdir/qbit.conf /mnt/data/config/qBittorrent/config/qBittorrent.conf
+    if [ "${GLOBAL_LANGUAGE}" = "chs" ]; then
+        LANG=zh
+    else
+        LANG=en
+    fi
+    sed -i "s|General.Locale=.*|General\\\Locale=${LANG}|g" /mnt/data/config/qBittorrent/config/qBittorrent.conf
+fi
+
+RAN=$(shuf -i 60001-61799 -n 1)
+sed -i "s|Session.Port=.*|Session\\\Port=${RAN}|g" /mnt/data/config/qBittorrent/config/qBittorrent.conf
+
+exec 2>&1
+exec /workdir/qbit --webui-port=61800 --profile=/mnt/data/config

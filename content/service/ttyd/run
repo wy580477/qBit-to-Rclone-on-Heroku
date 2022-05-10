@@ -1,0 +1,5 @@
+#!/bin/sh
+
+cd /mnt/data
+exec 2>&1
+exec ttyd -i 127.0.0.1 -p 61803 -P 3 -t fontSize=17 -t titleFixed=Heroku_ttyd -t 'theme={"background": "black"}' sh

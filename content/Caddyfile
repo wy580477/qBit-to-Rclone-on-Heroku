@@ -1,0 +1,55 @@
+# Created by wy580477 for customized container <https://github.com/wy580477>
+{
+        log {
+                exclude http.handlers.reverse_proxy
+        }
+}
+:{$PORT}
+encode gzip
+# Configure ttyd
+handle {$GLOBAL_PORTAL_PATH}/ttyd* {
+        redir {$GLOBAL_PORTAL_PATH}/ttyd {$GLOBAL_PORTAL_PATH}/ttyd/
+        uri strip_prefix {$GLOBAL_PORTAL_PATH}/ttyd       
+        basicauth {              
+                {$GLOBAL_USER} HASH
+        }     
+        reverse_proxy * localhost:61803
+}
+# Configure Rclone Web UI
+handle {$GLOBAL_PORTAL_PATH}/rcloneweb* {
+        redir {$GLOBAL_PORTAL_PATH}/rcloneweb {$GLOBAL_PORTAL_PATH}/rcloneweb/         
+        uri strip_prefix {$GLOBAL_PORTAL_PATH}/rcloneweb
+        basicauth {
+                {$GLOBAL_USER} HASH
+        }
+        root * /workdir/rcloneweb/build
+        file_server
+}
+# Configure qbittorrent
+handle {$GLOBAL_PORTAL_PATH}/qbit* {
+        redir {$GLOBAL_PORTAL_PATH}/qbit {$GLOBAL_PORTAL_PATH}/qbit/         
+        uri strip_prefix {$GLOBAL_PORTAL_PATH}/qbit
+        reverse_proxy * localhost:61800
+}
+# Configure Rclone RC
+handle_path {$GLOBAL_PORTAL_PATH}/rclonerc {
+        reverse_proxy * localhost:61802
+}
+# Configure Rclone Serve
+handle_path {$GLOBAL_PORTAL_PATH}/rclonerc/* {
+        reverse_proxy * localhost:61802
+}
+# Configure Filebrowser
+handle {$GLOBAL_PORTAL_PATH}/files* {
+        reverse_proxy {$GLOBAL_PORTAL_PATH}/files* localhost:61801
+}
+# Configure homer
+handle {$GLOBAL_PORTAL_PATH}* {  
+        redir {$GLOBAL_PORTAL_PATH} {$GLOBAL_PORTAL_PATH}/         
+        uri strip_prefix {$GLOBAL_PORTAL_PATH}
+        basicauth {              
+                {$GLOBAL_USER} HASH
+        }
+        root * /workdir/homer
+        file_server
+}

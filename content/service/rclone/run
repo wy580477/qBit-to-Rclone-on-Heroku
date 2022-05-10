@@ -1,0 +1,14 @@
+#!/bin/sh
+
+# Run rclone
+htpasswd -csb /workdir/htpasswd ${GLOBAL_USER} ${GLOBAL_PASSWORD}
+exec 2>&1
+exec rclone rcd --rc-serve \
+--rc-web-gui-no-open-browser \
+--rc-htpasswd=/workdir/htpasswd \
+--rc-addr=localhost:61802 \
+--buffer-size 4M \
+--transfers 4 \
+--config /mnt/data/config/rclone.conf \
+--rc-allow-origin=* \
+--use-mmap

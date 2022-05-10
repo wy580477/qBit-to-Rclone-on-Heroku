@@ -1,0 +1,65 @@
+{
+    "name": "Deploy",
+    "description": "Deploy",
+    "keywords": ["Deploy"],
+    "env": {
+        "GLOBAL_USER": {
+            "description": "Username for all web services except qbit",
+            "value": "admin"
+        },        
+        "GLOBAL_PASSWORD": {
+            "description": "Password for all web services except qbit. Recommend strong password.",
+            "value": "password"
+        },
+        "GLOBAL_LANGUAGE": {
+            "description": "Set language of qbit, portal page & filebrowser.(en or chs)",
+            "value": "en"
+        },
+        "GLOBAL_PORTAL_PATH": {
+            "description": "Portal page & base URL for all web services. Do not set to blank or '/'",
+            "value": "/portal"
+        },
+        "RCLONE_AUTO_MODE": {
+            "description": "Rclone auto-upload mode. 'move': move files to Rclone remote on download completion, 'copy': copy files to Rclone remote on download completion, 'custom': do nothing.",
+            "value": "move"
+        },
+        "RCLONE_DRIVE_NAME": {
+            "description": "Rclone remote name for auto-uploading. Do not add ':' at the end of value. If set to auto, Remote name will be extracted from the first line of rclone config file.",
+            "value": "auto"
+        },
+        "RCLONE_CONFIG_BASE64": {
+            "description": "Base64 encoded Rclone config file. You can use base64 command in linux OS or online base64 tools to encode rclone config file. Rclone config file with multiple remotes could exceed Heroku's 32kb limit for config vars.",
+            "required": false,
+            "value": ""
+        },
+        "RCLONE_UPLOAD_DIR": {
+            "description": "Dest folder of Rclone auto-upload.",
+            "value": "/upload"
+        },
+        "TZ": {
+            "description": "Timezone",
+            "value": "UTC"
+        },
+        "HEROKU_APP_NAME": {
+            "description": "Name of this heroku app. Optional.",
+            "required": false,
+            "value": ""
+        },
+        "HEROKU_KEEP_AWAKE": {
+            "description": "Optional. Set value to true for preventing dyno from auto-sleeping. Need HEROKU_APP_NAME to work.",
+            "required": false,
+            "value": ""
+        },
+        "HEROKU_API_KEY": {
+            "description": "Your heroku api key. Optional. It's used with HEROKU_APP_NAME and HEROKU_RESTART_TIME for refreshing Rclone token from within dyno to prevent token expiration.",
+            "required": false,
+            "value": ""
+        },
+        "HEROKU_RESTART_TIME": {
+            "description": "Optional. It's used with HEROKU_API_KEY for refreshing rclone token from within dyno. Dyno needs to be running at value time and will be restarted. Format: 6:00, 24-hour clock.",
+            "required": false,
+            "value": ""
+        }
+    },
+    "stack": "container"
+}

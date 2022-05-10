@@ -1,0 +1,18 @@
+#!/bin/sh
+
+sleep 55
+
+DATE=$(date +%H%M | sed 's/^0//g')
+RESTART_TIME=$(echo ${HEROKU_RESTART_TIME/:/} | sed 's/^0//g')
+
+if [[ "${DATE}" = "${RESTART_TIME}" ]] && [[ "${HEROKU_API_KEY}" != "" ]]; then
+  CONF=$(base64 /mnt/data/config/rclone.conf)
+  curl -n -X PATCH https://api.heroku.com/apps/"${HEROKU_APP_NAME}"/config-vars \
+  -d '{"RCLONE_CONFIG_BASE64": "'"${CONF}"'"}' \
+  -H "Content-Type: application/json" \
+  -H "Accept: application/vnd.heroku+json; version=3" -H "Authorization: Bearer "${HEROKU_API_KEY}""
+  curl -n -X DELETE https://api.heroku.com/apps/"${HEROKU_APP_NAME}"/dynos \
+  -H "Content-Type: application/json" \
+  -H "Accept: application/vnd.heroku+json; version=3" \
+  -H "Authorization: Bearer "${HEROKU_API_KEY}""
+fi
