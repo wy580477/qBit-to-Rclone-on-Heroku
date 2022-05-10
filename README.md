@@ -1,4 +1,4 @@
-[点击前往中文说明](https://github.com/wy580477/QTR-Heroku/blob/main/README_chs.md)
+[点击前往中文说明](https://github.com/wy580477/qBit-to-Rclone-on-Heroku/blob/main/README_chs.md)
 
 ## Acknowledgments
 
