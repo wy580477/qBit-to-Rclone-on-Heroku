@@ -4,7 +4,7 @@
 
 - [wahyd4/aria2-ariang-docker](https://github.com/wahyd4/aria2-ariang-docker)  Inspiration for this project.
 - [bastienwirtz/homer](https://github.com/bastienwirtz/homer)  A very simple static homepage for your server.
-- [userdocs/qbittorrent-nox-static](https://github.com/userdocs/qbittorrent-nox-static) | [filebrowser/filebrowser](https://github.com/filebrowser/filebrowser) | [rclone/rclone](https://github.com/rclone/rclone)
+- [userdocs/qbittorrent-nox-static](https://github.com/userdocs/qbittorrent-nox-static) | [WDaan/VueTorrent](https://github.com/WDaan/VueTorrent) | [filebrowser/filebrowser](https://github.com/filebrowser/filebrowser) | [rclone/rclone](https://github.com/rclone/rclone)
 
 ## Attention
 
@@ -22,11 +22,11 @@
 
 ## <a id="Overview"></a>Overview
 
-This project integrates qBittorrent, Rclone + WebUI with auto-upload function, customizable portal page, Filebrowser, ttyd web terminal.
+This project integrates qBittorrent + VueTorrent WebUI, Rclone + WebUI with auto-upload function, customizable portal page, Filebrowser, ttyd web terminal.
 
 [yt-dlp+aria2 version](https://github.com/wy580477/Heroku-All-In-One-APP)
 
-![image](https://user-images.githubusercontent.com/98247050/167557483-da363e35-9524-40a3-9eb8-212d36af517c.png)
+![image](https://user-images.githubusercontent.com/98247050/167996044-9c313c4a-6bbb-461d-88f2-2c4034f216f7.png)
 
  1. Rclone auto-upload function only needs to prepare rclone.conf file, and all other configurations are set to go.
  2. Rclone runs on daemon mode, easy to manually transfer files and monitor transfers in real time on WebUI.
@@ -46,7 +46,7 @@ This project integrates qBittorrent, Rclone + WebUI with auto-upload function, c
 ## <a id="first"></a>First run
 
  1. After deployment, for example, your heroku domain name is bobby.herokuapp.com, the portal page path is /portal, then visit bobby.herokuapp.com/portal to reach the portal page.
- 2. Click qBittorrent, then login in with default user admin and default password adminadmin. Change default user/password to your own, Recommend strong password.
+ 2. Click qBittorrent or VueTorrent, then login in with default user admin and default password adminadmin. Change default user/password to your own, Recommend strong password.
 
 ## <a id="more"></a>More usages and precautions
 
