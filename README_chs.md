@@ -24,11 +24,11 @@
 
 ## 概述
 
-本项目集成了qBittorrent、Rclone+WebUI、Rclone联动自动上传功能、Rclone远程存储文件列表、可自定义的导航页、Filebrowser轻量网盘、ttyd Web终端。
+本项目集成了qBittorrent和其Web前端VueTorrent、Rclone+WebUI、Rclone联动自动上传功能、Rclone远程存储文件列表、可自定义的导航页、Filebrowser轻量网盘、ttyd Web终端。
 
 [yt-dlp+aria2版本传送门](https://github.com/wy580477/Heroku-All-In-One-APP)
 
-![image](https://user-images.githubusercontent.com/98247050/167554029-fa7a4609-f471-410d-b79e-65827ed3c3bc.png)
+![image](https://user-images.githubusercontent.com/98247050/167992882-5b874f48-1c69-4abf-b663-986ab52fdd42.png)
 
  1. 联动上传功能只需要准备rclone.conf配置文件, 其他一切配置都预备齐全。
  2. Rclone以daemon方式运行，可在WebUI上手动传输文件和实时监测传输情况。
@@ -69,7 +69,7 @@
 ### 初次使用
 
  1. 部署完成后，比如你的heroku域名是bobby.herokuapp.com，导航页路径是/portal，访问bobby.herokuapp.com/portal 即可到达导航页。
- 2. 点击qBittorrent，输入默认用户名admin和默认密码adminadmin登陆。然后更改用户名和密码，务必设置为强密码。
+ 2. 点击qBittorrent或者VueTorrent，输入默认用户名admin和默认密码adminadmin登陆。然后更改用户名和密码，务必设置为强密码。
 
 ### 更多用法和注意事项
 
