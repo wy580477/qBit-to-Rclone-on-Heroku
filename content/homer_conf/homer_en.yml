@@ -82,6 +82,12 @@ services:
         tag: "app"
         url: "GLOBAL_PORTAL_PATH/qbit"
         target: "_blank" # optional html a tag target attribute
+      - name: "VueTorrent"
+        logo: "./assets/tools/vue.png"
+        subtitle: "qBittorrent WebUI"
+        tag: "app"
+        url: "GLOBAL_PORTAL_PATH/vue"
+        target: "_blank" # optional html a tag target attribute
       - name: "Filebrowser"
         logo: "./assets/tools/filebrowser.png"
         subtitle: "Web File Browser"

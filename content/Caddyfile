@@ -15,6 +15,22 @@ handle {$GLOBAL_PORTAL_PATH}/ttyd* {
         }     
         reverse_proxy * localhost:61803
 }
+# Configure qbittorrent
+handle {$GLOBAL_PORTAL_PATH}/qbit* {
+        redir {$GLOBAL_PORTAL_PATH}/qbit {$GLOBAL_PORTAL_PATH}/qbit/         
+        uri strip_prefix {$GLOBAL_PORTAL_PATH}/qbit
+        reverse_proxy * localhost:61800
+}
+# Configure Vuetorrent   
+handle {$GLOBAL_PORTAL_PATH}/vue* {
+        redir {$GLOBAL_PORTAL_PATH}/vue {$GLOBAL_PORTAL_PATH}/vue/
+        uri strip_prefix {$GLOBAL_PORTAL_PATH}/vue
+        handle /api* {
+                reverse_proxy * localhost:61800                                                                
+        }                                                                                                             
+        root * /workdir/vuetorrent/public                                                             
+        file_server                    
+}
 # Configure Rclone Web UI
 handle {$GLOBAL_PORTAL_PATH}/rcloneweb* {
         redir {$GLOBAL_PORTAL_PATH}/rcloneweb {$GLOBAL_PORTAL_PATH}/rcloneweb/         
@@ -24,12 +40,6 @@ handle {$GLOBAL_PORTAL_PATH}/rcloneweb* {
         }
         root * /workdir/rcloneweb/build
         file_server
-}
-# Configure qbittorrent
-handle {$GLOBAL_PORTAL_PATH}/qbit* {
-        redir {$GLOBAL_PORTAL_PATH}/qbit {$GLOBAL_PORTAL_PATH}/qbit/         
-        uri strip_prefix {$GLOBAL_PORTAL_PATH}/qbit
-        reverse_proxy * localhost:61800
 }
 # Configure Rclone RC
 handle_path {$GLOBAL_PORTAL_PATH}/rclonerc {

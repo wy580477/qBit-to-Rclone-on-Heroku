@@ -11,3 +11,6 @@ rm -rf ${DIR_TMP}
 # Install qibttorrent
 wget -qO /workdir/qbit https://github.com/userdocs/qbittorrent-nox-static/releases/latest/download/x86_64-qbittorrent-nox
 chmod +x /workdir/qbit
+
+# Install Vuetorrent
+wget -qO - https://github.com/WDaan/VueTorrent/releases/latest/download/vuetorrent.zip | busybox unzip -qd /workdir -
