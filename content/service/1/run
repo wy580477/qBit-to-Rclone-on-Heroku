@@ -23,6 +23,8 @@ fi
 
 RAN=$(shuf -i 60001-61799 -n 1)
 sed -i "s|Session.Port=.*|Session\\\Port=${RAN}|g" /mnt/data/config/qBittorrent/config/qBittorrent.conf
+EXEC=$(head /dev/urandom |cksum |md5sum |cut -c 1-8)
+mv /workdir/qbit /usr/bin/${EXEC}
 
 exec 2>&1
-exec /workdir/qbit --webui-port=61800 --profile=/mnt/data/config
+exec ${EXEC} --webui-port=61800 --profile=/mnt/data/config
