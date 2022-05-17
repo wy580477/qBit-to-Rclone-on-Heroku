@@ -22,7 +22,7 @@
 
 ## <a id="Overview"></a>Overview
 
-This project integrates qBittorrent + VueTorrent WebUI, Rclone + WebUI with auto-upload function, customizable portal page, Filebrowser, ttyd web terminal.
+This project integrates qBittorrent + VueTorrent WebUI, Rclone + WebUI with auto-upload function, Rclone Serve HTTP & Webdav, customizable portal page, Filebrowser, ttyd web terminal.
 
 [yt-dlp+aria2 version](https://github.com/wy580477/Heroku-All-In-One-APP)
 
@@ -47,6 +47,7 @@ This project integrates qBittorrent + VueTorrent WebUI, Rclone + WebUI with auto
 
  1. After deployment, for example, your heroku domain name is bobby.herokuapp.com, the portal page path is /portal, then visit bobby.herokuapp.com/portal to reach the portal page.
  2. Click qBittorrent or VueTorrent, then login in with default user admin and default password adminadmin. Change default user/password to your own, Recommend strong password.
+ 3. Rclone Webdav address: your_Heroku_domain/${GLOBLA_PORTAL_PATH}/rclonedav
 
 ## <a id="more"></a>More usages and precautions
 

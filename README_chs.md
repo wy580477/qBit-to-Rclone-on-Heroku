@@ -24,7 +24,7 @@
 
 ## 概述
 
-本项目集成了qBittorrent和其Web前端VueTorrent、Rclone+WebUI、Rclone联动自动上传功能、Rclone远程存储文件列表、可自定义的导航页、Filebrowser轻量网盘、ttyd Web终端。
+本项目集成了qBittorrent和其Web前端VueTorrent、Rclone+WebUI、Rclone联动自动上传功能、Rclone远程存储文件列表和Webdav服务、可自定义的导航页、Filebrowser轻量网盘、ttyd Web终端。
 
 [yt-dlp+aria2版本传送门](https://github.com/wy580477/Heroku-All-In-One-APP)
 
@@ -70,6 +70,7 @@
 
  1. 部署完成后，比如你的heroku域名是bobby.herokuapp.com，导航页路径是/portal，访问bobby.herokuapp.com/portal 即可到达导航页。
  2. 点击qBittorrent或者VueTorrent，输入默认用户名admin和默认密码adminadmin登陆。然后更改用户名和密码，务必设置为强密码。
+ 3. Rclone Webdav 地址：Heroku_app域名/${GLOBAL_PORTAL_PATH}/rclonedav
 
 ### 更多用法和注意事项
 
