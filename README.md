@@ -1,3 +1,9 @@
+## Warning | 警告
+   2022/5/21
+
+- Unmaintained repo | 停止维护
+- Checkout [Heroku-AIO-APP-EX](https://github.com/wy580477/Heroku-AIO-APP-EX)
+
 [点击前往中文说明](https://github.com/wy580477/qBit-to-Rclone-on-Heroku/blob/main/README_chs.md)
 
 ## Acknowledgments
